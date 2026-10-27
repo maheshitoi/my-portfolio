@@ -1,0 +1,146 @@
+.list {
+  list-style: none;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 48px;
+  padding: 40px 0;
+  border-top: 1px solid var(--border);
+}
+
+.item:last-child {
+  border-bottom: 1px solid var(--border);
+}
+
+.period {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.asideMeta {
+  font-size: 0.88rem;
+  color: var(--text-faint);
+}
+
+.role {
+  font-size: 1.3rem;
+}
+
+.at {
+  color: var(--text-faint);
+  font-weight: 400;
+}
+
+.summary {
+  margin-top: 8px;
+  color: var(--text-muted);
+  max-width: 68ch;
+}
+
+.highlights {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 24px 0 28px;
+  max-width: 72ch;
+}
+
+.highlights li {
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr);
+  gap: 10px;
+  font-size: 0.97rem;
+  color: var(--text-muted);
+  transition:
+    color 0.2s ease,
+    transform 0.3s var(--ease-out);
+}
+
+.check {
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  color: var(--accent);
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.3s var(--ease-out);
+}
+
+.highlights li:hover {
+  color: var(--text);
+  transform: translateX(4px);
+}
+
+.highlights li:hover .check {
+  background: var(--accent);
+  color: var(--accent-contrast);
+  transform: scale(1.12);
+}
+
+/* Aside: icon badge + meta with icons */
+
+.badge {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  margin-bottom: 16px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--accent);
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform 0.4s var(--ease-out),
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.item:hover .badge {
+  transform: rotate(-6deg) scale(1.06);
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-contrast);
+}
+
+.asideMeta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.role {
+  transition: color 0.2s ease;
+}
+
+.item:hover .role {
+  color: var(--accent);
+}
+
+.item:hover .period {
+  color: var(--accent);
+}
+
+.period {
+  transition: color 0.2s ease;
+}
+
+@media (max-width: 768px) {
+  .item {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+    padding: 32px 0;
+  }
+}

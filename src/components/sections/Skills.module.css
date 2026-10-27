@@ -1,0 +1,157 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.group {
+  padding: 28px;
+}
+
+.group + .group {
+  border-left: 1px solid var(--border);
+}
+
+.category {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-faint);
+  margin-bottom: 20px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.list li {
+  font-size: 0.98rem;
+  font-weight: 500;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .group:nth-child(3) {
+    border-left: none;
+  }
+
+  .group:nth-child(n + 3) {
+    border-top: 1px solid var(--border);
+  }
+}
+
+@media (max-width: 520px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .group + .group {
+    border-left: none;
+    border-top: 1px solid var(--border);
+  }
+}
+
+/* Hover effects */
+
+.category {
+  transition: color 0.2s ease;
+}
+
+.group:hover .category {
+  color: var(--accent);
+}
+
+.list li {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition:
+    color 0.2s ease,
+    transform 0.3s var(--ease-out);
+}
+
+.list li::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--border-strong);
+  transition:
+    background-color 0.2s ease,
+    transform 0.3s var(--ease-out);
+}
+
+.list li:hover {
+  color: var(--accent);
+  transform: translateX(4px);
+}
+
+.list li:hover::before {
+  background: var(--accent);
+  transform: scale(1.6);
+}
+
+/* Icons: logos replace the bullet dots */
+
+.list li::before {
+  display: none;
+}
+
+.category {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.categoryIcon {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: var(--radius-sm);
+  background: var(--accent-soft);
+  color: var(--accent);
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.4s var(--ease-out);
+}
+
+.group:hover .categoryIcon {
+  background: var(--accent);
+  color: var(--accent-contrast);
+  transform: rotate(-8deg);
+}
+
+.skillIcon {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--bg-subtle);
+  color: var(--text);
+  transition:
+    transform 0.3s var(--ease-out),
+    border-color 0.2s ease;
+}
+
+.list li:hover .skillIcon {
+  transform: scale(1.12) rotate(-6deg);
+  border-color: var(--accent-border);
+}

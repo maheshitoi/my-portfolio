@@ -1,0 +1,431 @@
+:root {
+  --bg: #fafaf9;
+  --bg-subtle: #f4f4f2;
+  --surface: #ffffff;
+  --text: #18181b;
+  --text-muted: #57575e;
+  --text-faint: #8a8a91;
+  --border: #e6e5e2;
+  --border-strong: #d4d3cf;
+  --accent: #0f766e;
+  --accent-hover: #115e59;
+  --accent-soft: #e6f4f1;
+  --accent-contrast: #ffffff;
+  --success: #15803d;
+
+  --font-sans: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, "SF Mono", Menlo, monospace;
+
+  --radius-sm: 6px;
+  --radius: 10px;
+  --radius-lg: 16px;
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.04);
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.04), 0 8px 24px -12px rgb(0 0 0 / 0.12);
+  --shadow-lg: 0 2px 4px rgb(0 0 0 / 0.04), 0 24px 48px -20px rgb(15 118 110 / 0.28);
+  --accent-glow: rgb(15 118 110 / 0.08);
+  --accent-border: rgb(15 118 110 / 0.35);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --container: 1120px;
+  --nav-height: 64px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b0c0e;
+    --bg-subtle: #111214;
+    --surface: #141518;
+    --text: #ededee;
+    --text-muted: #a3a3ab;
+    --text-faint: #6f6f78;
+    --border: #232429;
+    --border-strong: #303137;
+    --accent: #2dd4bf;
+    --accent-hover: #5eead4;
+    --accent-soft: rgb(45 212 191 / 0.1);
+    --accent-contrast: #04211d;
+    --success: #4ade80;
+    --shadow-sm: none;
+    --shadow: 0 8px 24px -12px rgb(0 0 0 / 0.6);
+    --shadow-lg: 0 24px 48px -20px rgb(45 212 191 / 0.18);
+    --accent-glow: rgb(45 212 191 / 0.09);
+    --accent-border: rgb(45 212 191 / 0.4);
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav-height) + 16px);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+ul {
+  list-style: none;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-contrast);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Layout */
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section {
+  padding: 112px 0;
+  border-top: 1px solid var(--border);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .section {
+    padding: 72px 0;
+  }
+}
+
+/* Section header */
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.eyebrow {
+  gap: 8px;
+  padding: 5px 12px 5px 10px;
+  border: 1px solid var(--accent-border);
+  border-radius: 999px;
+  background: var(--accent-soft);
+}
+
+.section-title {
+  font-size: clamp(1.85rem, 3.2vw, 2.5rem);
+  max-width: 22ch;
+}
+
+.section-lead {
+  margin-top: 16px;
+  font-size: 1.08rem;
+  color: var(--text-muted);
+  max-width: 60ch;
+}
+
+.section-header {
+  margin-bottom: 56px;
+}
+
+/* Buttons */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 44px;
+  padding: 0 20px;
+  border-radius: var(--radius);
+  font-size: 0.94rem;
+  font-weight: 500;
+  white-space: nowrap;
+  border: 1px solid transparent;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease,
+    transform 0.15s ease;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-primary {
+  background: var(--text);
+  color: var(--bg);
+}
+
+.btn-primary:hover {
+  background: var(--accent);
+  color: var(--accent-contrast);
+}
+
+.btn-secondary {
+  background: var(--surface);
+  border-color: var(--border-strong);
+  color: var(--text);
+}
+
+.btn-secondary:hover {
+  border-color: var(--text);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 8px 24px -10px var(--accent);
+}
+
+.btn .btn-arrow {
+  transition: transform 0.25s var(--ease-out);
+}
+
+.btn:hover .btn-arrow {
+  transform: translateX(3px);
+}
+
+.btn-sm {
+  height: 36px;
+  padding: 0 14px;
+  font-size: 0.88rem;
+}
+
+/* Tags */
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  height: 26px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  font-weight: 500;
+  white-space: nowrap;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    transform 0.2s var(--ease-out);
+}
+
+.tag:hover {
+  color: var(--accent);
+  border-color: var(--accent-border);
+  background: var(--accent-soft);
+  transform: translateY(-1px);
+}
+
+.tag {
+  gap: 6px;
+}
+
+.tag .tag-icon {
+  filter: grayscale(1);
+  opacity: 0.7;
+  transition:
+    filter 0.25s ease,
+    opacity 0.25s ease,
+    transform 0.3s var(--ease-out);
+}
+
+.tag:hover .tag-icon {
+  filter: none;
+  opacity: 1;
+  transform: scale(1.15);
+}
+
+/* Text link with underline animation */
+
+.link {
+  color: var(--text);
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.2s ease, color 0.15s ease;
+}
+
+.link:hover {
+  color: var(--accent);
+  background-size: 100% 1px;
+}
+
+/* Motion */
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    translate: 0 28px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/*
+ * Reveal-on-scroll uses the `translate` property, so it never fights with
+ * hover effects that use `transform`. Elements only start hidden when JS can
+ * reveal them again.
+ */
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  [data-reveal]:not(.is-visible) {
+    opacity: 0;
+  }
+
+  [data-reveal].is-visible {
+    animation: reveal-up 0.9s var(--ease-out) var(--delay, 0ms) both;
+  }
+
+  /* Plays on page load, no JS needed (used above the fold). */
+  .enter {
+    animation: reveal-up 0.9s var(--ease-out) var(--delay, 0ms) both;
+  }
+}
+
+/* Cursor-following glow on cards. Motion.tsx sets --mx / --my. */
+[data-spotlight] {
+  position: relative;
+  isolation: isolate;
+}
+
+[data-spotlight]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: radial-gradient(
+    420px circle at var(--mx, 50%) var(--my, 50%),
+    var(--accent-glow),
+    transparent 65%
+  );
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+
+[data-spotlight]:hover::before {
+  opacity: 1;
+}
+
+/* Hover lift shared by cards */
+.lift {
+  transition:
+    transform 0.35s var(--ease-out),
+    border-color 0.25s ease,
+    box-shadow 0.35s var(--ease-out);
+}
+
+.lift:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-border);
+  box-shadow: var(--shadow-lg);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

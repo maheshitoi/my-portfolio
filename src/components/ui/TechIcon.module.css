@@ -1,0 +1,7 @@
+.icon {
+  flex-shrink: 0;
+}
+
+.generic {
+  color: var(--accent);
+}

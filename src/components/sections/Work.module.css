@@ -1,0 +1,405 @@
+/* Overview card */
+
+.overview {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.overviewMain {
+  padding: 40px;
+}
+
+.kicker {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.name {
+  font-size: 2rem;
+  letter-spacing: -0.03em;
+}
+
+.subtitle {
+  display: block;
+  margin-top: 4px;
+  font-size: 1.1rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--text-muted);
+}
+
+.description {
+  margin: 20px 0 28px;
+  color: var(--text-muted);
+  max-width: 60ch;
+}
+
+.facts {
+  display: flex;
+  flex-direction: column;
+  padding: 16px 32px;
+  background: var(--bg-subtle);
+  border-left: 1px solid var(--border);
+}
+
+.fact {
+  padding: 16px 0;
+}
+
+.fact + .fact {
+  border-top: 1px solid var(--border);
+}
+
+.fact dt {
+  font-size: 0.8rem;
+  color: var(--text-faint);
+  margin-bottom: 2px;
+}
+
+.fact dd {
+  font-size: 0.97rem;
+  font-weight: 500;
+}
+
+/* Blocks */
+
+.block {
+  margin-top: 80px;
+}
+
+.blockTitle {
+  font-size: 1.2rem;
+  margin-bottom: 24px;
+}
+
+/* Modules */
+
+.modules {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 48px;
+}
+
+.module {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr);
+  gap: 12px;
+  padding: 24px 0;
+  border-top: 1px solid var(--border);
+}
+
+.index {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-faint);
+  padding-top: 2px;
+}
+
+.moduleName {
+  font-size: 1.02rem;
+  margin-bottom: 6px;
+}
+
+.moduleText {
+  font-size: 0.94rem;
+  color: var(--text-muted);
+}
+
+.moduleStack {
+  margin-top: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--accent);
+}
+
+/* Flows */
+
+.flows {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.flow {
+  padding: 32px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.flowName {
+  font-size: 1.08rem;
+}
+
+.flowText {
+  margin-top: 4px;
+  font-size: 0.93rem;
+  color: var(--text-muted);
+}
+
+.steps {
+  list-style: none;
+  margin-top: 28px;
+}
+
+.step {
+  position: relative;
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr);
+  gap: 16px;
+  padding-bottom: 22px;
+}
+
+.step:last-child {
+  padding-bottom: 0;
+}
+
+.step:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  left: 13.5px;
+  top: 30px;
+  bottom: 4px;
+  width: 1px;
+  background: var(--border-strong);
+}
+
+.stepNumber {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid var(--border-strong);
+  background: var(--bg);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 500;
+}
+
+.stepTitle {
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 28px;
+}
+
+.stepText {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+}
+
+@media (max-width: 900px) {
+  .overview {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .facts {
+    border-left: none;
+    border-top: 1px solid var(--border);
+  }
+
+  .modules,
+  .flows {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .overviewMain,
+  .flow {
+    padding: 24px;
+  }
+
+  .facts {
+    padding: 8px 24px;
+  }
+
+  .block {
+    margin-top: 56px;
+  }
+}
+
+/* Hover effects */
+
+.overview {
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.4s var(--ease-out);
+}
+
+.overview:hover {
+  border-color: var(--accent-border);
+  box-shadow: var(--shadow-lg);
+}
+
+.facts {
+  background: color-mix(in srgb, var(--bg-subtle) 80%, transparent);
+}
+
+.fact dd {
+  transition: color 0.2s ease;
+}
+
+.fact:hover dd {
+  color: var(--accent);
+}
+
+/* Module rows: accent bar grows along the top border, index lights up */
+
+.module {
+  position: relative;
+}
+
+.module::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s var(--ease-out);
+}
+
+.module:hover::before {
+  transform: scaleX(1);
+}
+
+.index,
+.moduleName {
+  transition:
+    color 0.2s ease,
+    transform 0.3s var(--ease-out);
+}
+
+.module:hover .index {
+  color: var(--accent);
+}
+
+.module:hover .moduleName {
+  transform: translateX(4px);
+}
+
+/* Flow steps: number fills with accent on hover */
+
+.stepNumber {
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.3s var(--ease-out);
+}
+
+.step:hover .stepNumber {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-contrast);
+  transform: scale(1.1);
+}
+
+/* Icons */
+
+.fact {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.factIcon,
+.moduleIcon,
+.flowIcon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  border-radius: var(--radius);
+  background: var(--accent-soft);
+  color: var(--accent);
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.4s var(--ease-out);
+}
+
+.factIcon {
+  width: 34px;
+  height: 34px;
+}
+
+.fact:hover .factIcon {
+  background: var(--accent);
+  color: var(--accent-contrast);
+  transform: scale(1.08);
+}
+
+.module {
+  grid-template-columns: 40px minmax(0, 1fr);
+  gap: 16px;
+}
+
+.moduleIcon {
+  width: 40px;
+  height: 40px;
+}
+
+.module:hover .moduleIcon {
+  background: var(--accent);
+  color: var(--accent-contrast);
+  transform: rotate(-8deg) scale(1.06);
+}
+
+.moduleName {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.moduleName .index {
+  font-size: 0.75rem;
+  padding-top: 0;
+}
+
+.moduleStack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+}
+
+.moduleStack li {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.flowHead {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.flowIcon {
+  width: 38px;
+  height: 38px;
+}
+
+.flow:hover .flowIcon {
+  background: var(--accent);
+  color: var(--accent-contrast);
+  transform: rotate(-8deg) scale(1.06);
+}
+
+.flowHead + .flowText {
+  margin-top: 12px;
+}

@@ -1,0 +1,178 @@
+.page {
+  min-height: 100vh;
+  padding: 24px 16px 64px;
+  background: var(--bg-subtle);
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  max-width: 820px;
+  margin: 0 auto 20px;
+}
+
+/* The resume is always rendered as black-on-white paper, regardless of theme. */
+.paper {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 56px 64px;
+  background: #ffffff;
+  color: #1c1c1f;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.header {
+  padding-bottom: 20px;
+  border-bottom: 2px solid #1c1c1f;
+}
+
+.name {
+  font-size: 2rem;
+  letter-spacing: -0.03em;
+}
+
+.role {
+  margin-top: 2px;
+  font-size: 1.05rem;
+  color: #0f766e;
+  font-weight: 500;
+}
+
+.contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  margin-top: 12px;
+  font-size: 0.84rem;
+  color: #55555c;
+}
+
+.contact a:hover {
+  color: #0f766e;
+}
+
+.section {
+  margin-top: 24px;
+}
+
+.heading {
+  font-size: 0.76rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #0f766e;
+  padding-bottom: 6px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #e3e3e0;
+}
+
+.skills {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.skills div {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 12px;
+}
+
+.skills dt {
+  font-weight: 600;
+}
+
+.entry + .entry {
+  margin-top: 16px;
+}
+
+.entryHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.entryHead h3 {
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+}
+
+.entryHead span {
+  flex-shrink: 0;
+  font-size: 0.84rem;
+  color: #55555c;
+}
+
+.entrySub {
+  font-size: 0.84rem;
+  color: #55555c;
+}
+
+.bullets {
+  margin-top: 8px;
+  padding-left: 18px;
+  list-style: disc;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.bullets li::marker {
+  color: #9a9aa0;
+}
+
+@media (max-width: 640px) {
+  .paper {
+    padding: 32px 24px;
+  }
+
+  .skills div {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .entryHead {
+    flex-direction: column;
+    gap: 0;
+  }
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 14mm;
+  }
+
+  .page {
+    padding: 0;
+    background: #ffffff;
+  }
+
+  .toolbar {
+    display: none;
+  }
+
+  .paper {
+    max-width: none;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    font-size: 10pt;
+  }
+
+  .heading,
+  .entryHead {
+    break-after: avoid;
+  }
+
+  .bullets li {
+    break-inside: avoid;
+  }
+}
