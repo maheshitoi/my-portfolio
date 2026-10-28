@@ -58,8 +58,8 @@ export const PROFILE = {
   whatsapp: "https://wa.me/917806816116",
   linkedin: "https://linkedin.com/in/mahesh-kannan-0355a8243",
   linkedinLabel: "linkedin.com/in/mahesh-kannan-0355a8243",
-  github: "https://github.com/maheshitoi",
-  githubLabel: "github.com/maheshitoi",
+  github: "https://github.com/maheshk13122000/my-portfolio",
+  githubLabel: "github.com/maheshk13122000/my-portfolio",
   avatar: "/portrait.jpg",
   summary: [
     "I'm a backend developer with 2 years of professional experience building scalable RESTful APIs using Node.js, NestJS, TypeScript, Prisma ORM and PostgreSQL.",
